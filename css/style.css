@@ -1,0 +1,49 @@
+*{
+  padding: 0;
+  margin: 0 ;
+  box-sizing: border-box;
+}
+
+html{
+  font-family:"Roboto", "Helvitica";
+  font-size :16px;
+}
+form{
+  margin: 100px auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  max-width: 500px;
+}
+h1{
+  text-align: center;
+}
+.group-from{
+  margin-bottom: 12px;
+}
+label,input{
+  display:block;
+  width: 100%;
+  line-height:1.4;
+}
+input{
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+}
+button{
+  margin: 12px auto;
+  width: 100%;
+  padding: 10px 24px;
+  text-transform: upper-case;
+  font-weight: 800;
+  background-color: blue;
+  color:white;
+  border: 1px solid blue;
+  border-radius: 8px;
+  transition: all 0.5s;
+}
+button:hover{
+  cursor:pointer;
+  background-color: white;
+  color:blue;
+}
