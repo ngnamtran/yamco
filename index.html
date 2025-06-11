@@ -10,11 +10,11 @@
     <div class="login">
       <div class="login__container">
         <h1>LOG IN</h1>
-        <form>
+        <form id = "login-form">
           <h5>Email</h5>
-          <input type="text" class="input-login-username" />
+          <input type="text" id="email" class="input-login-username" />
           <h5>Password</h5>
-          <input type="password" class="input-login-password" />
+          <input type="password" id="password" class="input-login-password" />
           <button type="submit" class="login__signInButton">Enter</button>
         </form>
         <a href="./signup.html" class="login__registerButton"
@@ -22,14 +22,12 @@
         >
       </div>
     </div>
-</body>
-</html>
 
-<---Firebase-Provided-initialization-->
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -39,7 +37,7 @@
     apiKey: "AIzaSyCzRi2y7wk-72F3IX3S7SM5_Mz99hmEPEM",
     authDomain: "yamco-5500.firebaseapp.com",
     projectId: "yamco-5500",
-    storageBucket: "yamco-5500.firebasestorage.app",
+    storageBucket: "yamco-5500.appspot.com",
     messagingSenderId: "126428222440",
     appId: "1:126428222440:web:96ebf20a6b8d8936264a5d",
     measurementId: "G-HXJ50HPZSV"
@@ -48,4 +46,28 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-</script>
+  const auth = getAuth(app);
+ 
+  // Handle Login Submission 
+  document.getElementById("login-form").addEventListener("submit", (e) => { 
+    e.preventDefault(); // prevent default form behavior 
+ 
+    const email = document.getElementById("email").value; 
+    const password = document.getElementById("password").value; 
+ 
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => { 
+        const user = userCredential.user; 
+        alert("Login successful! Welcome " + user.email); 
+        console.log("Logged in:", user); 
+        // Redirect to dashboard or home page here if needed 
+        // window.location.href = ".html";
+      }) 
+      .catch((error) => { 
+        console.error("Login failed:", error.message); 
+        alert("Login failed: " + error.message); 
+      }); 
+    }); 
+ </script> 
+</body> 
+</html>
