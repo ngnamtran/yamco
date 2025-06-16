@@ -37,50 +37,7 @@
         </div>
         <p class = "text-center mt-2">Already have account? <a href="./login.html">Log in</a></p>
       </form>
-      <script src="../js/signup.js" ></script>
+      <script type="module" src="../js/signup.js"></script>
 
-</body>
-
-
-
-
-
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCzRi2y7wk-72F3IX3S7SM5_Mz99hmEPEM",
-      authDomain: "yamco-5500.firebaseapp.com",
-      projectId: "yamco-5500",
-      storageBucket: "yamco-5500.appspot.com",
-      messagingSenderId: "126428222440",
-      appId: "1:126428222440:web:96ebf20a6b8d8936264a5d",
-      measurementId: "G-HXJ50HPZSV"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth = getAuth(app);
-
-    document.getElementById("signup-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          alert("Account created successfully! Welcome " + user.email);
-          window.location.href = "dashboard.html"; // redirect if desired
-        })
-        .catch((error) => {
-          console.error("Signup failed:", error.message);
-          alert("Signup failed: " + error.message);
-        });
-    });
-  </script>
 </body>
 </html>
